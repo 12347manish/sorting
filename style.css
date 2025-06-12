@@ -1,0 +1,161 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #121212; /* Black background */
+    color: #e0e0e0; /* Light grey text for readability */
+}
+
+.container {
+    background-color: #1e1e1e; /* Dark grey container */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Adjusted shadow for dark theme */
+    width: 90%;
+    max-width: 800px;
+    border: 1px solid #333; /* Subtle border for container */
+}
+
+.array-container {
+    display: flex;
+    align-items: flex-end; 
+    height: 350px;
+    border: 1px solid #444; /* Adjusted border */
+    margin-bottom: 25px;
+    padding: 10px;
+    background-color: #2a2a2a; /* Slightly lighter dark grey for array background */
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.array-bar {
+    background-color: #0095ff; /* Vibrant blue, stands out on dark */
+    /* Other .array-bar properties like margin, display, transition remain */
+    margin: 0 2px; 
+    display: inline-block;
+    transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+/* Visualization colors - ensure they contrast well with dark theme */
+/* 'red' for comparison will likely need to be a brighter red */
+/* 'green' for sorted will likely need to be a brighter green */
+/* 'purple', 'orange', 'pink' may also need adjustment if used */
+/* We will rely on the JavaScript to set these, but if specific shades are needed,
+   they can be defined as classes here and toggled. For now, direct style is fine. */
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.controls button, 
+.controls select {
+    padding: 12px 18px;
+    margin: 8px 5px;
+    border: 1px solid #555; /* Borders for buttons/selects */
+    border-radius: 6px;
+    background-color: #333; /* Dark background for buttons */
+    color: #e0e0e0; /* Light text for buttons */
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.controls button:hover {
+    background-color: #444; /* Slightly lighter on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.controls button:disabled {
+    background-color: #2a2a2a; /* Darker disabled state */
+    color: #666;
+    cursor: not-allowed;
+    border-color: #444;
+}
+
+.controls select {
+    background-color: #2a2a2a; /* Dark background for select */
+    color: #e0e0e0;
+}
+
+.controls div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-basis: calc(50% - 10px);
+}
+.controls div label {
+    margin-right: 8px;
+    font-size: 14px;
+    color: #aaa; /* Lighter label color */
+}
+.controls div input[type="range"] {
+    flex-grow: 1;
+    cursor: pointer;
+    /* Default range input styling might need adjustment for dark themes,
+       but it's often browser-dependent. For now, we leave it. */
+}
+.controls div span {
+    margin-left: 8px;
+    font-size: 14px;
+    color: #aaa;
+    min-width: 30px;
+}
+
+/* Specific styling for Generate New Array and Sort/Stop buttons */
+.controls button[style*="flex-basis: 100%"] { /* Generate New Array */
+     background-color: #0062cc; /* A distinct blue for generate, was green */
+     border-color: #005cbf;
+}
+.controls button[style*="flex-basis: 100%"]:hover {
+    background-color: #0052ac;
+}
+
+/* Main Sort button (not full width) */
+.controls > div > button:not([style*="flex-basis: 100%"]) { /* Sort button */
+    background-color: #007bff; /* Brighter blue for primary sort */
+    border-color: #007bff;
+}
+.controls > div > button:not([style*="flex-basis: 100%"]):hover { /* Sort button hover */
+    background-color: #0069d9;
+}
+
+/* Stop button (specific style from app.js: backgroundColor: '#dc3545') */
+/* We can add a specific class if needed, but inline style for Stop button is fine. */
+/* Example if we had a class .stop-button */
+/*
+.stop-button {
+    background-color: #c82333; // Darker red, good contrast
+    border-color: #bd2130;
+    color: white;
+}
+.stop-button:hover {
+    background-color: #a71d2a;
+}
+*/
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+    .controls div {
+        flex-basis: 100%;
+        justify-content: space-between;
+    }
+    .controls button, .controls select {
+        width: calc(100% - 10px);
+        margin-left: 0;
+        margin-right: 0;
+    }
+     .controls button[style*="flex-basis: calc(50% - 10px)"],
+     .controls div[style*="flex-basis: calc(50% - 10px)"] { /* Ensure these stack too */
+        flex-basis: 100%;
+    }
+}
